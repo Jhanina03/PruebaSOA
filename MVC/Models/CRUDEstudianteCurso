@@ -1,0 +1,24 @@
+<?php
+require_once('CRUD.php');
+
+class CRUDEstudianteCurso extends CRUD
+{
+    public function select(array $data) {
+        // Puedes implementarlo luego si deseas ver estudiantes por curso
+    }
+
+    public function insert(array $data) {
+        if (count($data) != 2) return false;
+        $query = "INSERT INTO EstudianteCursos (cedula, codCurso) VALUES (?, ?)";
+        $stmt = $this->conexion->prepare($query);
+        return $stmt->execute($data);
+    }
+
+    public function update(array $data, $key) {
+        // No necesario para esta relación por ahora
+    }
+
+    public function delete($key) {
+        // No necesario para esta relación por ahora
+    }
+}
